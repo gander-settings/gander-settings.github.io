@@ -1,60 +1,18 @@
-<!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>gander-settings — public configurations used by gander</title>
-<meta name="description" content="gander-settings hosts publicly visible configurations used by gander. Currently available: the shared Renovate configuration.">
-<meta property="og:title" content="gander-settings">
-<meta property="og:description" content="Publicly visible configurations used by gander.">
-<meta property="og:type" content="website">
-<meta name="theme-color" content="#0F1115">
-<style>
-:root{
-  --bg:#F6F7F9; --panel:#FFFFFF; --text:#14171C; --muted:#5A6270; --line:#DDE1E7; --accent:#1F6FEB;
-}
-@media (prefers-color-scheme: dark){
-  :root{
-    --bg:#0F1115; --panel:#171A21; --text:#E6E9EF; --muted:#98A1B0; --line:#2A2F3A; --accent:#58A6FF;
-  }
-}
-*{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;line-height:1.6}
-a{color:var(--accent)}
-code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.92em;background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:1px 6px}
-.wrap{max-width:760px;margin:0 auto;padding:64px 16px 48px}
-h1{margin:0 0 12px;font-size:clamp(34px,7vw,52px);line-height:1.1;letter-spacing:-.02em}
-.lead{font-size:clamp(18px,2.6vw,21px);color:var(--muted);margin:0 0 48px;max-width:36em}
-h2{font-size:13px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 16px}
-.card{display:block;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:22px 24px;text-decoration:none;color:inherit;transition:border-color .15s}
-.card:hover,.card:focus-visible{border-color:var(--accent)}
-.card h3{margin:0 0 6px;font-size:20px}
-.card h3 span{color:var(--accent)}
-.card p{margin:0;color:var(--muted)}
-.card .url{margin-top:12px;font-size:14px;color:var(--accent);word-break:break-all}
-.note{margin:24px 0 56px;color:var(--muted);font-size:15px}
-footer{border-top:1px solid var(--line);padding-top:24px;color:var(--muted);font-size:15px;display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between}
-footer a{color:var(--text)}
-</style>
-</head>
-<body>
-<main class="wrap">
-  <h1>gander-settings</h1>
-  <p class="lead">A home for publicly visible configurations used by <a href="https://github.com/gander">gander</a>. Everything here is shared in the open so it can be referenced from other repositories and tools, and reused by anyone who finds it useful.</p>
+---
+layout: default
+description: gander-settings hosts publicly visible configurations used by gander. Currently available, the shared Renovate configuration.
+---
+  <h1>{{ site.title }}</h1>
+  <p class="lead">A home for publicly visible configurations used by <a href="{{ site.owner.url }}">{{ site.owner.name }}</a>. Everything here is shared in the open so it can be referenced from other repositories and tools, and reused by anyone who finds it useful.</p>
 
   <h2>Available projects</h2>
-  <a class="card" href="https://gander-settings.github.io/renovate/">
-    <h3>gander-settings/<span>renovate</span></h3>
-    <p>Shared Renovate configuration presets for dependency updates.</p>
-    <div class="url">https://gander-settings.github.io/renovate/</div>
+{% for project in site.data.projects %}
+  <a class="card" href="{{ project.url }}">
+    <h3>gander-settings/<span>{{ project.name }}</span></h3>
+    <p>{{ project.description }}</p>
+    <div class="url">{{ project.url }}</div>
   </a>
+{% endfor %}
+{% if site.data.projects.size == 1 %}
   <p class="note">This is currently the only available project. More configurations may be added here over time.</p>
-
-  <footer>
-    <span>gander-settings</span>
-    <a href="https://github.com/gander-settings">github.com/gander-settings</a>
-  </footer>
-</main>
-</body>
-</html>
+{% endif %}

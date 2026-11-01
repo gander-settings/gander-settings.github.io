@@ -1,0 +1,4 @@
+- name: renovate
+  repo: gander-settings/renovate
+  url: https://gander-settings.github.io/renovate/
+  description: Shared Renovate configuration presets for dependency updates.
