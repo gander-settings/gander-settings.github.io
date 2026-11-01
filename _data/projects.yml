@@ -2,3 +2,4 @@
   repo: gander-settings/renovate
   url: https://gander-settings.github.io/renovate/
   description: Shared Renovate configuration presets for dependency updates.
+  llms_txt: https://gander-settings.github.io/renovate/llms.txt
