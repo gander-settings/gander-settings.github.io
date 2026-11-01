@@ -7,11 +7,14 @@ description: gander-settings hosts publicly visible configurations used by gande
 
   <h2>Available projects</h2>
 {% for project in site.data.projects %}
-  <a class="card" href="{{ project.url }}">
-    <h3>gander-settings/<span>{{ project.name }}</span></h3>
+  <div class="card">
+    <div class="card-head">
+      <h3><a class="card-link" href="{{ project.url }}">gander-settings/<span>{{ project.name }}</span></a></h3>
+      {% if project.llms_txt %}<a class="llms" href="{{ project.llms_txt }}" title="Machine-readable summary for LLMs"><code>llms.txt</code></a>{% endif %}
+    </div>
     <p>{{ project.description }}</p>
     <div class="url">{{ project.url }}</div>
-  </a>
+  </div>
 {% endfor %}
 {% if site.data.projects.size == 1 %}
   <p class="note">This is currently the only available project. More configurations may be added here over time.</p>
